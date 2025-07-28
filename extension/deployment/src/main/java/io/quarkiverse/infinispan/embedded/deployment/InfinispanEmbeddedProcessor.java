@@ -115,9 +115,10 @@ class InfinispanEmbeddedProcessor {
         // Protostream
         Index index = applicationIndexBuildItem.getIndex();
         Collection<ClassInfo> initializerClasses = index.getAllKnownImplementors(DotName.createSimple(
-                SerializationContextInitializer.class.getName()));
+                GeneratedSchema.class.getName()));
         initializerClasses
-                .addAll(index.getAllKnownImplementors(DotName.createSimple(GeneratedSchema.class.getName())));
+                .addAll(index.getAllKnownImplementors(DotName.createSimple(SerializationContextInitializer.class.getName())));
+
         List<SerializationContextInitializer> initializers = new ArrayList<>(initializerClasses.size());
         for (ClassInfo ci : initializerClasses) {
             try {
