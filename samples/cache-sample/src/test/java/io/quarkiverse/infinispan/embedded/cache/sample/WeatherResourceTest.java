@@ -34,7 +34,7 @@ class WeatherResourceTest {
         assertThat(weatherFirstCall).isEqualTo(weatherSecondCall);
 
         Awaitility.await()
-                .pollDelay(500, TimeUnit.MILLISECONDS)
+                .pollDelay(1, TimeUnit.SECONDS)
                 .untilAsserted(() -> Assertions.assertTrue(true));
 
         Weather weatherThirdCall = given()
